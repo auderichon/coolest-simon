@@ -1,0 +1,95 @@
+@import url("https://overpass-30e2.kxcdn.com/overpass.css");
+
+body {
+    font-family: 'overpass', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #262626;
+    color: white;
+    box-sizing: border-box;
+    margin: 5% 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#status {
+    align-self: flex-end;
+}
+
+#gameBoard {
+    cursor: grab;
+    width: 70%;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    margin: 0 10% 10% 10%;
+}
+
+.gameBlocks {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+}
+
+#top-left {
+    background: #74BF04;
+}
+
+#top-right {
+    background: #FFA900;
+}
+
+#bottom-left {
+    background: #FF36AF;
+}
+
+#bottom-right {
+    background: #1EA4D9;
+}
+
+#top-left .active {
+    background: #80FF00;
+}
+
+#top-right .active {
+    background: #FFFF00;
+}
+
+#bottom-left .active {
+    background: #FF0080;
+}
+
+#bottom-right .active {
+    background: #00FFFF;
+}
+
+#top-left:hover {
+    border: #63a303 solid 3px;
+}
+
+#top-right:hover {
+    border: #d48e01 solid 3px;
+}
+
+#bottom-left:hover {
+    border: #f81a9f solid 3px;
+}
+
+#bottom-right:hover {
+    border: #16759b solid 3px;
+}
+
+#startBtn {
+    background: #A50CE8;
+    width: 25%;
+    border-radius: 10px;
+    font-size: 2rem;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: white;
+}
