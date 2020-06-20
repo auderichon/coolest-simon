@@ -1,7 +1,7 @@
-@import url("https://overpass-30e2.kxcdn.com/overpass.css");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
 
 body {
-    font-family: 'overpass', Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background: #262626;
@@ -18,7 +18,6 @@ body {
 }
 
 #gameBoard {
-    cursor: grab;
     width: 70%;
     grid-template-columns: 2;
     grid-template-rows: 2;
@@ -30,6 +29,7 @@ body {
     height: 100px;
     margin: 10px;
     border-radius: 10px;
+    cursor: grab;
 }
 
 .row {
@@ -38,21 +38,25 @@ body {
 
 #top-left {
     background: #74BF04;
+    border: #74BF04 solid 3px;
 }
 
 #top-right {
     background: #FFA900;
+    border: #FFA900 solid 3px;
 }
 
 #bottom-left {
     background: #FF36AF;
+    border: #FF36AF solid 3px;
 }
 
 #bottom-right {
     background: #1EA4D9;
+    border: #1EA4D9 solid 3px;
 }
 
-#top-left .active {
+.active #top-left {
     background: #80FF00;
 }
 
@@ -77,7 +81,7 @@ body {
 }
 
 #bottom-left:hover {
-    border: #f81a9f solid 3px;
+    border: #c40377 solid 3px;
 }
 
 #bottom-right:hover {
