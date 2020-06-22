@@ -4,6 +4,7 @@ const bottomLeft = document.getElementById("bottom-left");
 const bottomRight = document.getElementById("bottom-right");
 const startBtn = document.getElementById("startBtn");
 const turnCount = document.getElementById("count");
+const muteBtn = document.getElementById("soundOn");
 
 let compSequence = [];
 let playerSequence = [];
@@ -13,7 +14,7 @@ let goodGuess = true; // determines whether the player has hit the right colors 
 let compTurn = true; // determines whether it's the computer's turn or the player's turn
 let intervalId = 0;
 //let strictMode = false; when implementing the strict mode
-//let noise = true; when implementing the sound activation
+let soundOn = true;
 let gameOn = false;
 let playerWon = false;
 let playerCanClick = true;
@@ -38,16 +39,17 @@ function addNewIndex(sequence) {
 
 // make one block lighten itself
 function playLight(sequence, index) {
-    if (sequence[index] === 0) tLeft();
-    if (sequence[index] === 1) tRight();
-    if (sequence[index] === 2) bLeft();
-    if (sequence[index] === 3) bRight();
+    for (let i = 0; i < gameBlocks.length; i++) {
+        if (sequence[index] === i) playBlock(i);
+    }
 }
 
 // play the sound associated with the block lightened
 function playSound(sound) {
-    let soundPlayed = new Audio(sound);
-    soundPlayed.play();
+    if (soundOn) {
+        let soundPlayed = new Audio(sound);
+        soundPlayed.play();
+    }
 }
 
 // function to play a sequence of blocks + need to be an async function ???
@@ -76,48 +78,27 @@ function playBlocks() {
     // playerCanClick = true;
 }
 
-function tLeft() {
-    playSound(blockSounds[0]);
-    //topLeft.classList.add("active");
-    topLeft.style.background = "#bbfa5c";
-}
-
-function tRight() {
-    playSound(blockSounds[1]);
-    //topRight.classList.add("active");
-    topRight.style.background = "#FFFC36";
-}
-
-function bLeft() {
-    playSound(blockSounds[2]);
-    //bottomLeft.classList.add("active");
-    bottomLeft.style.background = "#fa8fd1";
-}
-
-function bRight() {
-    playSound(blockSounds[3]);
-    //bottomRight.classList.add("active");
-    bottomRight.style.background = "#00FFFF";
+function playBlock(index) {
+    playSound(blockSounds[index]);
+    gameBlocks[index].classList.add("active");
+    setTimeout(() => gameBlocks[index].classList.remove("active"), delay / 4);
 }
 
 function clearBrightColors() {
-    // for (let block in gameBlocks) {
-    //     block.classList.remove("active");
-    // }
-    topLeft.style.background = "#74BF04";
-    topRight.style.background = "#FFA900";
-    bottomLeft.style.background = "#FF36AF";
-    bottomRight.style.background = "#1EA4D9";
+    for (let i = 0; i < gameBlocks.length; i++) {
+        gameBlocks[i].classList.remove("active");
+    }
 }
 
 function playBrightColors() {
-    // for (let block in gameBlocks) {
-    //     block.classList.remove("active");
-    // }
-    topLeft.style.background = "#bbfa5c";
-    topRight.style.background = "#FFFC36";
-    bottomLeft.style.background = "#fa8fd1";
-    bottomRight.style.background = "#00FFFF";
+    for (let i = 0; i < gameBlocks.length; i++) {
+        gameBlocks[i].classList.add("active");
+    }
+}
+
+function flashBlocks() {
+    playBrightColors();
+    //create animation here
 }
 
 // track blocks clicked by the player and compare them with the original sequence
@@ -177,14 +158,14 @@ function gameOver() {
     gameOn = false;
     playerCanClick = true;
     setTimeout(() => alert ("game over"), delay);
-    // play game over music - TO BE ADDED
+    if (soundOn) playSound("https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg");
 }
 
 function winGame() {
-    playBrightColors();
+    flashBlocks(); // TO BE ADDED
     gameOn = false;
     playerCanClick = true;
-    setTimeout(() => alert ("Congrats you won !!!"), delay);
+    setTimeout(() => alert ("Congrats! YOU ROCK!!!"), delay);
     // play winner music - TO BE ADDED
 }
 
@@ -193,109 +174,35 @@ startBtn.addEventListener('click', () => {
     if (!gameOn) playGame();
 });
 
-// even-listener sur les blocks
-// function blockClick () {
-//     for (let i = 0; i < gameBlocks.length; i++) {
-//         if (!gameOn) {
-//             gameBlocks[i].addEventListener('click', playLight);
-//             // blockSounds[i].addEventListener('click', playSound);
-
-//         } else if (gameOn && playerCanClick) {
-//             topLeft.addEventListener('click', /*simonGame.lightSound(block)*/ document.getElementById("top-left").classList.add("active"));
-//             playerSequence.push(block);
-//             compare(block);
-//         }
-//     }
-// }
-
-//blockClick();
-
-topLeft.addEventListener('click', () => {
-    if (!playerCanClick) {
-        return;
-    } else if (playerCanClick && !gameOn) {
-        tLeft();
-        setTimeout(() => {
-            clearBrightColors();
-        }, delay / 4);
-    } else if (playerCanClick && gameOn) {
-        //let index = gameBlocks.indexOf("topLeft");
-        playerSequence.push(0);
-        console.log(playerSequence);
-        compare();
-        tLeft();
-        if (!playerWon) {
-            setTimeout(() => {
-                clearBrightColors();
-            }, delay / 4);
-        }
+function blocksListeners() {
+    for (let i = 0; i < gameBlocks.length; i++) {
+        gameBlocks[i].addEventListener('click', (event) => {
+            if (!playerCanClick) {
+                return;
+            } else if (playerCanClick && !gameOn) {
+                playBlock(i);
+            } else {
+                playerSequence.push(i);
+                console.log(playerSequence);
+                compare();
+                playBlock(i);
+                // if (!playerWon) {
+                //     setTimeout(() => {
+                //         clearBrightColors();
+                //     }, delay / 4);
+                }
+            }
+        );
     }
-});
+}
 
+blocksListeners();
 
-topRight.addEventListener('click', (event) => {
-    if (!playerCanClick) {
-        return;
-    } else if (playerCanClick && !gameOn) {
-        tRight();
-        setTimeout(() => {
-            clearBrightColors();
-        }, delay);
+muteBtn.addEventListener('change', () => {
+    if(muteBtn.checked) {
+        soundOn = false;
     } else {
-        //let index = gameBlocks.indexOf("topRight");
-        playerSequence.push(1);
-        console.log(playerSequence);
-        compare();
-        tRight();
-        if (!playerWon) {
-            setTimeout(() => {
-                clearBrightColors();
-            }, delay / 4);
-        }
+        soundOn = true;
     }
 });
 
-
-bottomLeft.addEventListener('click', (event) => {
-    if (!playerCanClick) {
-        return;
-    } else if (playerCanClick && !gameOn) {
-        bLeft();
-        setTimeout(() => {
-            clearBrightColors();
-        }, delay);
-    } else {
-        //let index = gameBlocks.indexOf("bottomLeft");
-        playerSequence.push(2);
-        console.log(playerSequence);
-        compare();
-        bLeft();
-        if (!playerWon) {
-            setTimeout(() => {
-                clearBrightColors();
-            }, delay / 4);
-        }
-    }
-});
-
-bottomRight.addEventListener('click', (event) => {
-    if (!playerCanClick) {
-        return;
-    } else if (playerCanClick && !gameOn) {
-        bRight();
-        setTimeout(() => {
-            clearBrightColors();
-        }, delay);
-    } else {
-        //let index = gameBlocks.indexOf("bottomRight");
-        playerSequence.push(3);
-        console.log(playerSequence);
-        compare();
-        bRight();
-        if (!playerWon) {
-            setTimeout(() => {
-                clearBrightColors();
-            }, delay / 4);
-        }
-    }
-});

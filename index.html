@@ -8,16 +8,27 @@
     <script src="./js/index.js" type="module"></script>
 </head>
 <body>
-    <h1>Let's play!</h1>
+    <header>
+        <h1>Let's play!</h1>
+    </header>
+    
 
     <!-- <aside>Choose your theme widget</aside> -->
+    <section id="game-specs">
+        <div id="theme">
+
+        </div>
+        <div id="status">
+            <input type="checkbox" id="soundOn" name="sound">
+            <label for="sound">Mute</label>
+            <p>Count: <span id="count"></span></p>
+            <!-- <p>Level: <span></span></p>
+            <p>Lives: <span></span></p> -->
+        </div>
+    </section>
     
-    <div id="status">
-        <p>Count: <span id="count"></span></p>
-        <!-- <p>Level: <span></span></p>
-        <p>Lives: <span></span></p> -->
-    </div>
-    <div id="gameBoard">
+
+    <section id="gameBoard">
         <div class="row">
             <div class="gameBlocks" id="top-left"></div>
             <div class="gameBlocks" id="top-right"></div>
@@ -26,7 +37,13 @@
             <div class="gameBlocks" id="bottom-left"></div>
             <div class="gameBlocks" id="bottom-right"></div>
         </div>
-    </div>
-    <button id="startBtn">Start</button>
+    </section>
+
+    <section id="start-game">
+        <button id="startBtn">Start</button>
+    </section>
+
+    <footer></footer>
+
 </body>
 </html>

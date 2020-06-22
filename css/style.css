@@ -1,32 +1,66 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
 
-body {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     background: #262626;
     color: white;
-    box-sizing: border-box;
-    margin: 5% 10%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: (5, 1fr);
+    grid-template-rows: (7, 1fr);
+}
+
+body > * {
+    padding: 0 20px;
+}
+
+header {
+    grid-column: 1 / 6;
+    grid-row: 1 / 2;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-#status {
-    align-self: flex-end;
+#game-specs {
+    grid-column: 1 / 6;
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #gameBoard {
-    width: 70%;
-    grid-template-columns: 2;
-    grid-template-rows: 2;
-    margin: 0 10% 10% 10%;
+    grid-column: 1 / 6;
+    grid-row: 3 / 6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#start-game {
+    grid-column: 1 / 6;
+    grid-row: 6 / 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    grid-column: 1 / 6;
+    grid-row: 7 / 8;
 }
 
 .gameBlocks {
-    width: 100px;
-    height: 100px;
+    width: 40%;
+    height: 100%;
     margin: 10px;
     border-radius: 10px;
     cursor: grab;
@@ -34,6 +68,10 @@ body {
 
 .row {
     display: flex;
+    height: 46%;
+    width: 60%;
+    align-items: center;
+    justify-content: center;
 }
 
 #top-left {
@@ -56,19 +94,19 @@ body {
     border: #1EA4D9 solid 3px;
 }
 
-.active #top-left {
-    background: #80FF00;
+.active#top-left {
+    background: #bbfa5c;
 }
 
-#top-right .active {
-    background: #FFFF00;
+.active#top-right {
+    background: #FFFC36;
 }
 
-#bottom-left .active {
-    background: #FF0080;
+.active#bottom-left {
+    background: #fa8fd1;
 }
 
-#bottom-right .active {
+.active#bottom-right {
     background: #00FFFF;
 }
 
@@ -97,4 +135,10 @@ body {
     padding-bottom: 2%;
     color: white;
     cursor: grab;
+}
+
+@media (max-width: 650px) {
+    .row {
+        width: 85%;
+    }
 }
