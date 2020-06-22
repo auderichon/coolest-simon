@@ -9,7 +9,7 @@ let compSequence = [];
 let playerSequence = [];
 let blocksPlayed = 0;
 let turn = 0;
-let good = true; // determines whether the player has hit the right colors or not
+let goodGuess = true; // determines whether the player has hit the right colors or not
 let compTurn = true; // determines whether it's the computer's turn or the player's turn
 let intervalId = 0;
 //let strictMode = false; when implementing the strict mode
@@ -17,24 +17,16 @@ let intervalId = 0;
 let gameOn = false;
 let playerWon = false;
 let playerCanClick = true;
-let delay = 800;
+let delay = 1000;
 let numberOfRounds = 3;
 
 let index = null;
-// const blockSounds = [
-//     "https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg", // topLeft
-//     "https://actions.google.com/sounds/v1/cartoon/cartoon_cowbell.ogg", // topRight
-//     "https://actions.google.com/sounds/v1/cartoon/pop.ogg", // bottomLeft
-//     "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" // bottomRight
-// ]
-
 const blockSounds = [
-    "https://s3.amazonaws.com/freecodecamp/simonSound1.mp3",
-    "https://s3.amazonaws.com/freecodecamp/simonSound2.mp3",
-    "https://s3.amazonaws.com/freecodecamp/simonSound3.mp3",
-    "https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"
+    "https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg", // topLeft
+    "https://actions.google.com/sounds/v1/cartoon/cartoon_cowbell.ogg", // topRight
+    "https://actions.google.com/sounds/v1/cartoon/pop.ogg", // bottomLeft
+    "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" // bottomRight
 ]
-
 
 const gameBlocks = [topLeft, topRight, bottomLeft, bottomRight];
 
@@ -132,9 +124,9 @@ function playBrightColors() {
 function compare() {
     if (!playerCanClick) return;
 
-    if (playerSequence[playerSequence.length - 1] !== compSequence[playerSequence.length - 1]) good = false;
+    if (playerSequence[playerSequence.length - 1] !== compSequence[playerSequence.length - 1]) goodGuess = false;
     
-    if (good === false) {
+    if (goodGuess === false) {
         playBrightColors();
         setTimeout(() => {
             clearBrightColors();
@@ -143,12 +135,12 @@ function compare() {
         gameOver();
     }
 
-    if (playerSequence.length === numberOfRounds && good) {
+    if (playerSequence.length === numberOfRounds && goodGuess) {
         playerWon = true;
         winGame();
     } 
     
-    if (turn === playerSequence.length && good && !playerWon) {
+    if (turn === playerSequence.length && goodGuess && !playerWon) {
         // play win music
         turn++;
         blocksPlayed = 0;
@@ -166,7 +158,7 @@ function initializeGame() {
     turn = 1;
     intervalId = 0;
     playerWon = false;
-    good = true;
+    goodGuess = true;
 }
 
 function playGame() {
@@ -184,7 +176,7 @@ function playGame() {
 function gameOver() {
     gameOn = false;
     playerCanClick = true;
-    alert ("game over");
+    setTimeout(() => alert ("game over"), delay);
     // play game over music - TO BE ADDED
 }
 
@@ -192,7 +184,7 @@ function winGame() {
     playBrightColors();
     gameOn = false;
     playerCanClick = true;
-    alert ("Congrats you won !!!");
+    setTimeout(() => alert ("Congrats you won !!!"), delay);
     // play winner music - TO BE ADDED
 }
 
