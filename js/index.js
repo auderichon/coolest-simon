@@ -1,9 +1,9 @@
 //--------- variables depending on the level chosen -------//
 const cartoonSounds = [
-  "https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg", // topLeft
+  "./sounds/cartoons/boing.ogg", // topLeft
   "./sounds/cartoons/kiss.mp3", // topRight
   "./sounds/cartoons/pop.mp3", // bottomLeft
-  "https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg", // bottomRight
+  "./sounds/cartoons/flicks.ogg", // bottomRight
   "./sounds/cartoons/bounce.mp3", // topMiddle
   "./sounds/cartoons/swoosh.mp3", // bottomMiddle
   "./sounds/cartoons/prick.mp3", // middleLeft
@@ -25,6 +25,17 @@ const classicSounds = [
   "./sounds/classic/simonSound4.mp3", // bottomRight
 ];
 
+const electroSounds = [
+  "./sounds/electro/electro1.mp3", // topLeft
+  "./sounds/electro/electro2.mp3", // topRight
+  "./sounds/electro/electro3.mp3", // bottomLeft
+  "./sounds/electro/electro4.mp3", // bottomRight
+  "./sounds/electro/electro5.mp3", // topMiddle
+  "./sounds/electro/electro6.mp3", // bottomMiddle
+  "./sounds/electro/electro7.mp3", // middleLeft
+  "./sounds/electro/electro8.mp3", // middleMiddle
+  "./sounds/electro/electro9.mp3", // middleRight
+];
 //---------------------------------------------------------//
 
 const topLeft = document.getElementById("top-left");
@@ -200,7 +211,7 @@ function gameOver() {
     playSound(
       "https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
     );
-    setTimeout(hideThemeAndLevel, delay * 2);
+  setTimeout(hideThemeAndLevel, delay * 2);
 }
 
 function winGame() {
@@ -220,6 +231,7 @@ function winGame() {
   setTimeout(hideThemeAndLevel, delay * 2);
 }
 
+// -----------------------  Functions to set the game board ------------------------------ //
 function easyMedium() {
   document.getElementById("row2").classList.add("hidden");
   for (let i = 0; i < document.getElementsByClassName("row").length; i++) {
@@ -252,37 +264,50 @@ function makeBoard() {
 makeBoard();
 
 function updateGameBlocks() {
-  if ((level = "easy")) {
+  if (level === "easy") {
     gameBlocks = [topLeft, topRight, bottomLeft, bottomRight];
-  } else if ((level = "medium")) {
+  } else if (level === "medium") {
     gameBlocks = [
       topLeft,
-      topMiddle,
       topRight,
       bottomLeft,
-      bottomMiddle,
       bottomRight,
+      topMiddle,
+      bottomMiddle,
     ];
   } else {
     gameBlocks = [
       topLeft,
-      topMiddle,
       topRight,
+      bottomLeft,
+      bottomRight,
+      topMiddle,
+      bottomMiddle,
       middleLeft,
       middleMiddle,
       middleRight,
-      bottomLeft,
-      bottomMiddle,
-      bottomRight,
     ];
   }
 }
 
 updateGameBlocks();
 
-function updateSoundBlocks() {}
+function updateSound() {
+  if (theme === "farm") blockSounds = farmSounds;
+  if (theme === "classic") blockSounds = classicSounds;
+  if (theme === "cartoons" && level === "easy")
+    blockSounds = cartoonSounds.slice(0, 4);
+  if (theme === "cartoons" && level === "medium")
+    blockSounds = cartoonSounds.slice(0, 6);
+  if (theme === "cartoons" && level === "hard") blockSounds = cartoonSounds;
+  if (theme === "electro" && level === "easy")
+    blockSounds = electroSounds.slice(0, 4);
+  if (theme === "electro" && level === "medium")
+    blockSounds = electroSounds.slice(0, 6);
+  if (theme === "electro" && level === "hard") blockSounds = electroSounds;
+}
 
-updateSoundBlocks();
+updateSound();
 
 function applyTheme() {
   for (let i = 0; i < blocksDiv.length; i++) {
@@ -379,8 +404,13 @@ for (let i = 0; i < levelChoice.length; i++) {
       level = "hard";
       hideThemes();
     }
+
     makeBoard();
     updateGameBlocks();
+    updateSound();
+    // console.log(theme, blockSounds, gameBlocks);
+
+    blocksListeners();
   });
 }
 
@@ -427,6 +457,6 @@ for (let i = 0; i < themeChoice.length; i++) {
       showLevels();
     }
     applyTheme();
-    updateSoundBlocks();
+    updateSound();
   });
 }
