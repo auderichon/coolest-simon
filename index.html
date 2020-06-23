@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Coolest Simon Game</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" href="./images/favicon.png" />
     <script src="./js/index.js" type="module"></script>
 </head>
 <body>
@@ -16,14 +17,45 @@
     <!-- <aside>Choose your theme widget</aside> -->
     <section id="game-specs">
         <div id="theme">
-
+            <p>Pick your theme:</p>
+            <div>
+                <input type="radio" id="cartoons" name="theme" value="cartoons" checked>
+                <label for="cartoons">Cartoons</label>
+            </div>
+            <!-- <div>
+                <input type="radio" id="farm" name="theme" value="farm">
+                <label for="farm">Farm</label>
+            </div>
+            <div>
+                <input type="radio" id="classic" name="theme" value="classic">
+                <label for="classic">Classic</label>
+            </div>
+            <div>
+                <input type="radio" id="electro" name="theme" value="electro">
+                <label for="electro">Electro</label>
+            </div> -->
         </div>
+        <form id="levelChoice">
+            <p>Select level:</p>
+            <div>
+                <input type="radio" id="easy" name="level" value="easy" checked>
+                <label for="easy">Easy</label>
+            </div>
+                <div>
+                <input type="radio" id="medium" name="level" value="medium">
+                <label for="medium">Medium</label>
+            </div>
+            <div>
+                <input type="radio" id="hard" name="level" value="hard">
+                <label for="hard">Hard</label>
+            </div>
+        </form>
         <div id="status">
             <input type="checkbox" id="soundOn" name="sound">
             <label for="sound">Mute</label>
             <br>
-            <input type="checkbox" id="strictMode" name="stric" checked>
-            <label for="stric">Strict mode</label>
+            <input type="checkbox" id="strictMode" name="strict" checked>
+            <label for="strict">Strict mode</label>
             <p>Count: <span id="count"></span></p>
             <!-- <p>Level: <span></span></p>
             <p>Lives: <span></span></p> -->
@@ -34,10 +66,17 @@
     <section id="gameBoard">
         <div class="row">
             <div class="gameBlocks" id="top-left"></div>
+            <div class="gameBlocks" id="top-middle"></div>
             <div class="gameBlocks" id="top-right"></div>
+        </div>
+        <div class="row" id="row2">
+            <div class="gameBlocks" id="middle-left"></div>
+            <div class="gameBlocks" id="middle-middle"></div>
+            <div class="gameBlocks" id="middle-right"></div>
         </div>
         <div class="row">
             <div class="gameBlocks" id="bottom-left"></div>
+            <div class="gameBlocks" id="bottom-middle"></div>
             <div class="gameBlocks" id="bottom-right"></div>
         </div>
     </section>

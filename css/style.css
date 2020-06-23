@@ -1,150 +1,159 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    background: #262626;
-    color: white;
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: (5, 1fr);
-    grid-template-rows: (12, 1fr);
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background: #262626;
+  color: white;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: (5, 1fr);
+  grid-template-rows: (12, 1fr);
 }
 
 body > * {
-    padding: 0 20px;
+  padding: 0 20px;
 }
 
 header {
-    grid-column: 1 / 6;
-    grid-row: 1 / 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-column: 1 / 6;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
 }
 
 #game-specs {
-    grid-column: 1 / 6;
-    grid-row: 2 / 4;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  grid-column: 1 / 6;
+  grid-row: 2 / 4;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 #gameBoard {
-    grid-column: 1 / 6;
-    grid-row: 4 / 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+  grid-column: 1 / 6;
+  grid-row: 4 / 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #start-game {
-    grid-column: 1 / 6;
-    grid-row: 11 / 12;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  grid-column: 1 / 6;
+  grid-row: 11 / 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 footer {
-    grid-column: 1 / 6;
-    grid-row: 12 / 13;
+  grid-column: 1 / 6;
+  grid-row: 12 / 13;
 }
 
 .gameBlocks {
-    width: 40%;
-    height: 100%;
-    margin: 10px;
-    border-radius: 10px;
-    cursor: grab;
+  width: 40%;
+  height: 100%;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: grab;
 }
 
 .row {
-    display: flex;
-    height: 46%;
-    width: 60%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  height: 46%;
+  width: 60%;
+  align-items: center;
+  justify-content: center;
+}
+
+.row.hard {
+    height: 30%;
+  }
+
+.hidden {
+    display: none;
 }
 
 #top-left {
-    background: #74BF04;
-    border: #74BF04 solid 3px;
+  background: #74bf04;
+  border: #74bf04 solid 3px;
 }
 
 #top-right {
-    background: #FFA900;
-    border: #FFA900 solid 3px;
+  background: #ffa900;
+  border: #ffa900 solid 3px;
 }
 
 #bottom-left {
-    background: #FF36AF;
-    border: #FF36AF solid 3px;
+  background: #ff36af;
+  border: #ff36af solid 3px;
 }
 
 #bottom-right {
-    background: #1EA4D9;
-    border: #1EA4D9 solid 3px;
+  background: #1ea4d9;
+  border: #1ea4d9 solid 3px;
 }
 
 .active#top-left {
-    background: #bbfa5c;
+  background: #bbfa5c;
 }
 
 .active#top-right {
-    background: #FFFC36;
+  background: #fffc36;
 }
 
 .active#bottom-left {
-    background: #fa8fd1;
+  background: #fa8fd1;
 }
 
 .active#bottom-right {
-    background: #00FFFF;
+  background: #00ffff;
 }
 
 #top-left:hover {
-    border: #63a303 solid 3px;
+  border: #63a303 solid 3px;
 }
 
 #top-right:hover {
-    border: #d48e01 solid 3px;
+  border: #d48e01 solid 3px;
 }
 
 #bottom-left:hover {
-    border: #c40377 solid 3px;
+  border: #c40377 solid 3px;
 }
 
 #bottom-right:hover {
-    border: #16759b solid 3px;
+  border: #16759b solid 3px;
 }
 
 #startBtn {
-    background: #A50CE8;
-    width: 25%;
-    border-radius: 10px;
-    font-size: 1.8rem;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    color: white;
-    cursor: grab;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-weight: bold;
+  background: #a50ce8;
+  width: 25%;
+  border-radius: 10px;
+  font-size: 1.8rem;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  color: white;
+  cursor: grab;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 @media (max-width: 650px) {
-    .row {
-        width: 85%;
-    }
-    #startBtn {
-        font-size: 1.5rem;
-    }
-
+  .row {
+    width: 85%;
+  }
+  #startBtn {
+    font-size: 1.5rem;
+  }
 }

@@ -1,11 +1,19 @@
 const topLeft = document.getElementById("top-left");
+const topMiddle = document.getElementById("top-middle");
 const topRight = document.getElementById("top-right");
+const middleLeft  = document.getElementById("bottom-left");
+const middleMiddle = document.getElementById("bottom-left");
+const middleRight = document.getElementById("bottom-right");
 const bottomLeft = document.getElementById("bottom-left");
+const bottomMiddle = document.getElementById("bottom-middle");
 const bottomRight = document.getElementById("bottom-right");
 const startBtn = document.getElementById("startBtn");
 const turnCount = document.getElementById("count");
 const muteBtn = document.getElementById("soundOn");
 const strictBtn = document.getElementById("strictMode");
+const levelChoice = document.getElementsByName("level");
+console.log(levelChoice);
+
 
 let compSequence = [];
 let playerSequence = [];
@@ -20,6 +28,8 @@ let gameOn = false;
 let playerWon = false;
 let delay = 1000;
 let numberOfRounds = 3;
+let level = "easy";
+let theme = "cartoons";
 
 //--------- variables depending on the level chosen -------//
 const blockSounds = [
@@ -121,12 +131,12 @@ function compare() {
       }, delay);
       gameOver();
     } else {
-      //ADD try again sound
+      playSound('./sounds/try-again.mp3');
       blocksPlayed = 0;
       playerSequence = [];
       goodGuess = true;
       compTurn = true;
-      playCompSequence();
+      setTimeout(playCompSequence, delay);
     }
   }
 
@@ -175,7 +185,12 @@ function winGame() {
   setTimeout(() => flashBlocks(), delay / 2); // TO BE ADDED
   gameOn = false;
   compTurn = false;
-  setTimeout(() => alert("Congrats! YOU ROCK!!!"), delay);
+  if (strictMode) {
+    setTimeout(() => alert("Congrats! YOU ROCK!!!"), delay);
+  } else {
+    setTimeout(() => alert("Congrats! and try strict mode next time ;)"), delay);
+  }
+  
   // play winner music - TO BE ADDED
 }
 
@@ -207,3 +222,37 @@ blocksListeners();
 muteBtn.addEventListener("change", () => (muteBtn.checked) ? soundOn = false : soundOn = true);
 
 strictBtn.addEventListener("change", () => (strictBtn.checked) ? strictMode = true : strictMode = false);
+
+function makeBoard() {
+        if (level === "easy") {
+            document.getElementById("row2").classList.add("hidden");
+            topMiddle.classList.add("hidden");
+            bottomMiddle.classList.add("hidden");
+            document.getElementsByClassName("row").className = "row";
+        } else if (level === "medium") {
+            document.getElementById("row2").classList.add("hidden");
+            topMiddle.classList.remove("hidden");
+            bottomMiddle.classList.remove("hidden");
+            document.getElementsByClassName("row").className = "row";
+        } else {
+            document.getElementById("row2").classList.remove("hidden");
+            topMiddle.classList.remove("hidden");
+            bottomMiddle.classList.remove("hidden");
+            document.getElementsByClassName("row").className = "row hard";
+        }
+} 
+
+for (let i = 0; i < levelChoice.length; i++) {
+    levelChoice[i].addEventListener("change", () => {
+        if (levelChoice[i].id === "easy") {
+            level = "easy";
+        } else if (levelChoice[i].id === "medium") {
+            level = "medium";
+        } else {
+            level = "hard";
+        }
+        makeBoard();
+    });
+}
+
+makeBoard();
