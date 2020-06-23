@@ -77,14 +77,24 @@ footer {
 }
 
 .row.hard {
-    height: 30%;
-  }
-
-.hidden {
-    display: none;
+  height: 30%;
 }
 
+.hidden {
+  display: none;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+/* cartoon themes (default theme) */
 #top-left {
+  background: #74bf04;
+  border: #74bf04 solid 3px;
+}
+
+#top-middle {
   background: #74bf04;
   border: #74bf04 solid 3px;
 }
@@ -94,7 +104,27 @@ footer {
   border: #ffa900 solid 3px;
 }
 
+#middle-left {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+#middle-middle {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+#middle-right {
+  background: #1ea4d9;
+  border: #1ea4d9 solid 3px;
+}
+
 #bottom-left {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+#bottom-middle {
   background: #ff36af;
   border: #ff36af solid 3px;
 }
@@ -108,11 +138,31 @@ footer {
   background: #bbfa5c;
 }
 
+.active#top-middle {
+  background: #bbfa5c;
+}
+
 .active#top-right {
   background: #fffc36;
 }
 
+.active#middle-left {
+  background: #bbfa5c;
+}
+
+.active#middle-middle {
+  background: #bbfa5c;
+}
+
+.active#middle-right {
+  background: #fffc36;
+}
+
 .active#bottom-left {
+  background: #fa8fd1;
+}
+
+.active#bottom-middle {
   background: #fa8fd1;
 }
 
@@ -124,12 +174,32 @@ footer {
   border: #63a303 solid 3px;
 }
 
+#top-middle:hover {
+  border: #63a303 solid 3px;
+}
+
 #top-right:hover {
+  border: #d48e01 solid 3px;
+}
+
+#middle-left:hover {
+  border: #63a303 solid 3px;
+}
+
+#middle-middle:hover {
+  border: #63a303 solid 3px;
+}
+
+#middle-right:hover {
   border: #d48e01 solid 3px;
 }
 
 #bottom-left:hover {
   border: #c40377 solid 3px;
+}
+
+#bottom-middle:hover {
+  border: #16759b solid 3px;
 }
 
 #bottom-right:hover {
@@ -156,4 +226,244 @@ footer {
   #startBtn {
     font-size: 1.5rem;
   }
+}
+
+/* classic theme */
+.classicTheme#top-left {
+  background: #3edd4b;
+  border: #3edd4b solid 3px;
+}
+
+.classicTheme#top-right {
+  background: #dd4b3e;
+  border: #dd4b3e solid 3px;
+}
+
+.classicTheme#bottom-left {
+  background: #ffea37;
+  border: #ffea37 solid 3px;
+}
+
+.classicTheme#bottom-right {
+  background: #2a19e7;
+  border: #2a19e7 solid 3px;
+}
+
+.classicTheme.active#top-left {
+  background: #8ff899;
+}
+
+.classicTheme.active#top-right {
+  background: #f78d83;
+}
+
+.classicTheme.active#bottom-left {
+  background: #faed8e;
+}
+
+.classicTheme.active#bottom-right {
+  background: #62c0fa;
+}
+
+.classicTheme#top-left:hover {
+  border: #1e6d25 solid 3px;
+}
+
+.classicTheme#top-right:hover {
+  border: #b41506 solid 3px;
+}
+
+.classicTheme#bottom-left:hover {
+  border: #cab605 solid 3px;
+}
+
+.classicTheme#bottom-right:hover {
+  border: #0c0188 solid 3px;
+}
+
+/* farm theme */
+.farmTheme#top-left {
+  background: #3edd4b;
+  border: #3edd4b solid 3px;
+}
+
+.farmTheme#top-right {
+  background: #dd4b3e;
+  border: #dd4b3e solid 3px;
+}
+
+.farmTheme#bottom-left {
+  background: #ffea37;
+  border: #ffea37 solid 3px;
+}
+
+.farmTheme#bottom-right {
+  background: #2a19e7;
+  border: #2a19e7 solid 3px;
+}
+
+.farmTheme.active#top-left {
+  background-image: url("../../images/cow.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #7ddd85;
+}
+
+.farmTheme.active#top-right {
+  background-image: url("../../images/cock.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #d87b73;
+}
+
+.farmTheme.active#bottom-left {
+  background-image: url("../../images/horse.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fcef79;
+}
+
+.farmTheme.active#bottom-right {
+  background-image: url("../../images/sheep.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #5e89e6;
+}
+
+.farmTheme#top-left:hover {
+  border: #1e6d25 solid 3px;
+}
+
+.farmTheme#top-right:hover {
+  border: #b41506 solid 3px;
+}
+
+.farmTheme#bottom-left:hover {
+  border: #cab605 solid 3px;
+}
+
+.farmTheme#bottom-right:hover {
+  border: #0c0188 solid 3px;
+}
+
+/* electro theme*/
+.electroTheme#top-left {
+  background: #74bf04;
+  border: #74bf04 solid 3px;
+}
+
+.electroTheme#top-middle {
+  background: #74bf04;
+  border: #74bf04 solid 3px;
+}
+
+.electroTheme#top-right {
+  background: #ffa900;
+  border: #ffa900 solid 3px;
+}
+
+.electroTheme#middle-left {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+.electroTheme#middle-middle {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+.electroTheme#middle-right {
+  background: #1ea4d9;
+  border: #1ea4d9 solid 3px;
+}
+
+.electroTheme#bottom-left {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+.electroTheme#bottom-middle {
+  background: #ff36af;
+  border: #ff36af solid 3px;
+}
+
+.electroTheme#bottom-right {
+  background: #1ea4d9;
+  border: #1ea4d9 solid 3px;
+}
+
+.electroTheme.active#top-left {
+  background: #bbfa5c;
+}
+
+.electroTheme.active#top-middle {
+  background: #bbfa5c;
+}
+
+.electroTheme.active#top-right {
+  background: #fffc36;
+}
+
+.electroTheme.active#middle-left {
+  background: #bbfa5c;
+}
+
+.electroTheme.active#middle-middle {
+  background: #bbfa5c;
+}
+
+.electroTheme.active#middle-right {
+  background: #fffc36;
+}
+
+.electroTheme.active#bottom-left {
+  background: #fa8fd1;
+}
+
+.electroTheme.active#bottom-middle {
+  background: #fa8fd1;
+}
+
+.electroTheme.active#bottom-right {
+  background: #00ffff;
+}
+
+.electroTheme#top-left:hover {
+  border: #63a303 solid 3px;
+}
+
+.electroTheme#top-middle:hover {
+  border: #63a303 solid 3px;
+}
+
+.electroTheme#top-right:hover {
+  border: #d48e01 solid 3px;
+}
+
+.electroTheme#middle-left:hover {
+  border: #63a303 solid 3px;
+}
+
+.electroTheme#middle-middle:hover {
+  border: #63a303 solid 3px;
+}
+
+.electroTheme#middle-right:hover {
+  border: #d48e01 solid 3px;
+}
+
+.electroTheme#bottom-left:hover {
+  border: #c40377 solid 3px;
+}
+
+.electroTheme#bottom-middle:hover {
+  border: #16759b solid 3px;
+}
+
+.electroTheme#bottom-right:hover {
+  border: #16759b solid 3px;
 }
