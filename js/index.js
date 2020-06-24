@@ -67,7 +67,7 @@ let soundOn = true;
 let gameOn = false;
 let playerWon = false;
 let delay = 1000;
-let numberOfRounds = 3;
+let numberOfRounds = 5;
 let level = "easy";
 let theme = "cartoons";
 let gameBlocks = [
@@ -265,13 +265,16 @@ function makeBoard() {
   if (level === "easy") {
     topMiddle.classList.add("hidden");
     bottomMiddle.classList.add("hidden");
+    //numberOfRounds = 20;
     easyMedium();
   } else if (level === "medium") {
     easyMedium();
     showMiddle();
+    //numberOfRounds = 25;
   } else {
     document.getElementById("row2").classList.remove("hidden");
     showMiddle();
+    //numberOfRounds = 30;
     for (let i = 0; i < document.getElementsByClassName("row").length; i++) {
       document.getElementsByClassName("row")[i].classList.add("hard");
     }

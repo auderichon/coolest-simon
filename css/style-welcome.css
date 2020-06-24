@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background: #262626;
+  color: white;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: (5, 1fr);
+  grid-template-rows: (12, 1fr);
+}
+
+body > * {
+  padding: 0 20px;
+}
+
+header {
+  grid-column: 1 / 6;
+  grid-row: 1 / 7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+}
+
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h1 span {
+  font-size: 3.5rem;
+  margin-top: 8%;
+  display: block;
+  background-image: linear-gradient(
+    135deg,
+    #FF8000,
+    #00FFFF,
+    #FFFF00,
+    #FF0080,
+    #80FF00,
+    #FF8000,
+    #FFFF00
+  );
+  -webkit-background-clip: text;
+  /* background-clip: text; */
+  color: transparent;
+}
+
+#playerName {
+  grid-column: 1 / 6;
+  grid-row: 7 / 9;
+  display: flex;
+  justify-content: center;
+}
+
+#pName {
+  height: 45%;
+  border-radius: 5px;
+  border-color: #FF8000;
+}
+
+#levelSelection {
+  grid-column: 1 / 6;
+  grid-row: 9 / 12;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#levelSelection img{
+    max-width: 30%;
+    max-height: 30%;
+  }
+
+  #levelSelection p{
+    margin-right: 10px;
+    align-self: center;
+  }
+
+#levelSelection button {
+  height: 60%;
+  margin: 0 3% 0 3%;
+  padding: 0 5% 0 5%;
+  cursor: grab;
+  border-radius: 10px;
+}
+
+#buttons {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+footer {
+  grid-column: 1 / 6;
+  grid-row: 12 / 13;
+  justify-content: center;
+  display: flex;
+}
+
+@media (max-width: 650px) {
+  header {
+    grid-row: 1 / 6;
+  }
+  #playerName {
+    grid-row: 6 / 9;
+  }
+  #levelSelection {
+    grid-row: 9 / 12;
+  }
+}
+
+footer ul {
+  list-style: none;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: flex-end;
+}
+
+footer li {
+  margin: 0 30px 10px 30px;
+  display: block;
+}
