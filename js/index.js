@@ -1,4 +1,4 @@
-//--------- variables depending on the level chosen -------//
+//--------- music arrays -------//
 const cartoonSounds = [
   "./sounds/cartoons/boing.ogg", // topLeft
   "./sounds/cartoons/kiss.mp3", // topRight
@@ -41,9 +41,9 @@ const electroSounds = [
 const topLeft = document.getElementById("top-left");
 const topMiddle = document.getElementById("top-middle");
 const topRight = document.getElementById("top-right");
-const middleLeft = document.getElementById("bottom-left");
-const middleMiddle = document.getElementById("bottom-left");
-const middleRight = document.getElementById("bottom-right");
+const middleLeft = document.getElementById("middle-left");
+const middleMiddle = document.getElementById("middle-middle");
+const middleRight = document.getElementById("middle-right");
 const bottomLeft = document.getElementById("bottom-left");
 const bottomMiddle = document.getElementById("bottom-middle");
 const bottomRight = document.getElementById("bottom-right");
@@ -70,9 +70,20 @@ let delay = 1000;
 let numberOfRounds = 3;
 let level = "easy";
 let theme = "cartoons";
-let gameBlocks = [];
+let gameBlocks = [
+  topLeft,
+  topRight,
+  bottomLeft,
+  bottomRight,
+  topMiddle,
+  bottomMiddle,
+  middleLeft,
+  middleMiddle,
+  middleRight,
+];
 let blockSounds = [];
 
+// -----------------------  Functions to play the game ------------------------------ //
 // add random index to sequence (indexes to be used with the blocks array and the sounds array)
 function addNewIndex(sequence) {
   sequence.push(parseInt(Math.random() * gameBlocks.length));
@@ -91,6 +102,11 @@ function playLight(index) {
   gameBlocks[index].classList.add("active");
   setTimeout(() => gameBlocks[index].classList.remove("active"), delay / 2);
 }
+
+// function playLight(block) {
+//     block.classList.add("active");
+//     setTimeout(() => block.classList.remove("active"), delay / 2);
+//   }
 
 // activate sound and light of a specific block inside a sequence of blocks to be played
 function playBlockOfSequence(sequence, index) {
@@ -147,6 +163,7 @@ function playBlocks() {
 
 // compare the blocks clicked by the player to the original sequence
 function compare() {
+  //console.log(`the player sequence is ${playerSequence}, the computer sequence is ${compSequence}`);
   if (
     playerSequence[playerSequence.length - 1] !==
     compSequence[playerSequence.length - 1]
@@ -207,10 +224,9 @@ function gameOver() {
   gameOn = false;
   compTurn = false;
   setTimeout(() => alert("game over"), delay);
-  if (soundOn)
-    playSound(
-      "https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
-    );
+  playSound(
+    "https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
+  );
   setTimeout(hideThemeAndLevel, delay * 2);
 }
 
@@ -218,6 +234,7 @@ function winGame() {
   setTimeout(() => flashBlocks(), delay / 2); // TO BE ADDED
   gameOn = false;
   compTurn = false;
+  playSound("../sounds/cheering.mp3");
   if (strictMode) {
     setTimeout(() => alert("Congrats! YOU ROCK!!!"), delay);
   } else {
@@ -261,8 +278,6 @@ function makeBoard() {
   }
 }
 
-makeBoard();
-
 function updateGameBlocks() {
   if (level === "easy") {
     gameBlocks = [topLeft, topRight, bottomLeft, bottomRight];
@@ -290,8 +305,6 @@ function updateGameBlocks() {
   }
 }
 
-updateGameBlocks();
-
 function updateSound() {
   if (theme === "farm") blockSounds = farmSounds;
   if (theme === "classic") blockSounds = classicSounds;
@@ -307,26 +320,29 @@ function updateSound() {
   if (theme === "electro" && level === "hard") blockSounds = electroSounds;
 }
 
-updateSound();
-
 function applyTheme() {
+  clearBrightColors();
   for (let i = 0; i < blocksDiv.length; i++) {
     if (theme === "classic") {
       blocksDiv[i].classList.add("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
+      startBtn.style.background = "grey";
     } else if (theme === "farm") {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.add("farmTheme");
+      startBtn.style.background = "grey";
     } else if (theme === "electro") {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.add("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
+      startBtn.style.background = "#BF066C";
     } else {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
+      startBtn.style.background = "#c90fee";
     }
   }
 }
@@ -408,9 +424,10 @@ for (let i = 0; i < levelChoice.length; i++) {
     makeBoard();
     updateGameBlocks();
     updateSound();
-    // console.log(theme, blockSounds, gameBlocks);
 
-    blocksListeners();
+    //removeBlocksListeners();
+
+    //blocksListeners();
   });
 }
 
@@ -429,6 +446,8 @@ function blocksListeners() {
       } else if (!compTurn && !gameOn) {
         playLight(i);
         playSound(blockSounds[i]);
+        console.log(gameBlocks[i]);
+        console.log(gameBlocks);
       } else {
         playerSequence.push(i);
         compare();
@@ -439,7 +458,22 @@ function blocksListeners() {
   }
 }
 
-blocksListeners();
+// function blocksListeners(block, i) {
+//   block.addEventListener("click", (event) => {
+//       if (compTurn) {
+//         return;
+//       } else if (!compTurn && !gameOn) {
+//         playLight(block);
+//         playSound(blockSounds[i]);
+//       } else {
+//         playerSequence.push(block);
+//         compare();
+//         playLight(block);
+//         if (goodGuess) playSound(blockSounds[i]);
+//       }
+//     });
+//   }
+// }
 
 for (let i = 0; i < themeChoice.length; i++) {
   themeChoice[i].addEventListener("change", () => {
@@ -460,3 +494,20 @@ for (let i = 0; i < themeChoice.length; i++) {
     updateSound();
   });
 }
+
+// ----------------------- Functions to run when opening the game ------------------------------ //
+
+// blocksListeners(topLeft, 0);
+// blocksListeners(topRight, 1);
+// blocksListeners(bottomLeft, 2);
+// blocksListeners(bottomRight, 3);
+// blocksListeners(topMiddle, 4);
+// blocksListeners(bottomMiddle, 5);
+// blocksListeners(middleLeft, 6);
+// blocksListeners(middleMiddle, 7);
+// blocksListeners(middleRight, 8);
+blocksListeners();
+
+makeBoard();
+updateGameBlocks();
+updateSound();
