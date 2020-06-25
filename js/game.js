@@ -1,6 +1,6 @@
 //--------- music arrays -------//
 const cartoonSounds = [
-  "../../sounds/cartoons/boing.mp3", // topLeft
+  "../../sounds/cartoons/booing.mp3", // topLeft
   "../../sounds/cartoons/kiss.mp3", // topRight
   "../../sounds/cartoons/pop.mp3", // bottomLeft
   "../../sounds/cartoons/flicks.mp3", // bottomRight
@@ -134,6 +134,8 @@ function playCompSequence() {
   intervalId = setInterval(function () {
     if (i < compSequence.length) {
       playBlockOfSequence(compSequence, i);
+      console.log(compSequence);
+      console.log(compSequence[i]);
     } else {
       return;
     }
