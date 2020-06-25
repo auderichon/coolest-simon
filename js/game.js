@@ -1,40 +1,40 @@
 //--------- music arrays -------//
 const cartoonSounds = [
-  "../../sounds/cartoons/booing.mp3", // topLeft
-  "../../sounds/cartoons/kiss.mp3", // topRight
-  "../../sounds/cartoons/pop.mp3", // bottomLeft
-  "../../sounds/cartoons/flicks.mp3", // bottomRight
-  "../../sounds/cartoons/bounce.mp3", // topMiddle
-  "../../sounds/cartoons/swoosh.mp3", // bottomMiddle
-  "../../sounds/cartoons/prick.mp3", // middleLeft
-  "../../sounds/cartoons/squash.mp3", // middleMiddle
-  "../../sounds/cartoons/bounce2.mp3", // middleRight
+  "../sounds/cartoons/booing.mp3", // topLeft
+  "../sounds/cartoons/kiss.mp3", // topRight
+  "../sounds/cartoons/pop.mp3", // bottomLeft
+  "../sounds/cartoons/flicks.mp3", // bottomRight
+  "../sounds/cartoons/bounce.mp3", // topMiddle
+  "../sounds/cartoons/swoosh.mp3", // bottomMiddle
+  "../sounds/cartoons/prick.mp3", // middleLeft
+  "../sounds/cartoons/squash.mp3", // middleMiddle
+  "../sounds/cartoons/bounce2.mp3", // middleRight
 ];
 
 const farmSounds = [
-  "../../sounds/farm/bull.mp3", // topLeft
-  "../../sounds/farm/cock.mp3", // topRight
-  "../../sounds/farm/horse.mp3", // bottomLeft
-  "../../sounds/farm/sheep.mp3", // bottomRight
+  "../sounds/farm/bull.mp3", // topLeft
+  "../sounds/farm/cock.mp3", // topRight
+  "../sounds/farm/horse.mp3", // bottomLeft
+  "../sounds/farm/sheep.mp3", // bottomRight
 ];
 
 const classicSounds = [
-  "../../sounds/classic/simonSound1.mp3", // topLeft
-  "../../sounds/classic/simonSound2.mp3", // topRight
-  "../../sounds/classic/simonSound3.mp3", // bottomLeft
-  "../../sounds/classic/simonSound4.mp3", // bottomRight
+  "../sounds/classic/simonSound1.mp3", // topLeft
+  "../sounds/classic/simonSound2.mp3", // topRight
+  "../sounds/classic/simonSound3.mp3", // bottomLeft
+  "../sounds/classic/simonSound4.mp3", // bottomRight
 ];
 
 const electroSounds = [
-  "../../sounds/electro/electro1.mp3", // topLeft
-  "../../sounds/electro/electro2.mp3", // topRight
-  "../../sounds/electro/electro3.mp3", // bottomLeft
-  "../../sounds/electro/electro4.mp3", // bottomRight
-  "../../sounds/electro/electro5.mp3", // topMiddle
-  "../../sounds/electro/electro6.mp3", // bottomMiddle
-  "../../sounds/electro/electro7.mp3", // middleLeft
-  "../../sounds/electro/electro8.mp3", // middleMiddle
-  "../../sounds/electro/electro9.mp3", // middleRight
+  "../sounds/electro/electro1.mp3", // topLeft
+  "../sounds/electro/electro2.mp3", // topRight
+  "../sounds/electro/electro3.mp3", // bottomLeft
+  "../sounds/electro/electro4.mp3", // bottomRight
+  "../sounds/electro/electro5.mp3", // topMiddle
+  "../sounds/electro/electro6.mp3", // bottomMiddle
+  "../sounds/electro/electro7.mp3", // middleLeft
+  "../sounds/electro/electro8.mp3", // middleMiddle
+  "../sounds/electro/electro9.mp3", // middleRight
 ];
 //---------------------------------------------------------//
 
