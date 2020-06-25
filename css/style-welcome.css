@@ -137,13 +137,13 @@ footer {
 
 @media (max-width: 650px) {
   header {
-    grid-row: 1 / 6;
+    grid-row: 1 / 5;
   }
   #playerName {
-    grid-row: 6 / 9;
+    grid-row: 5 / 8;
   }
   #levelSelection {
-    grid-row: 9 / 12;
+    grid-row: 8 / 12;
   }
   #buttons button {
     font-size: 1rem;
