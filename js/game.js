@@ -59,6 +59,13 @@ const homeIcon = document.getElementById("home");
 const rulesPopin = document.getElementById("rules-popin");
 const rules = document.getElementById("rules");
 const closeRules = document.getElementsByClassName("close")[0];
+const creditsPopin = document.getElementById("credits-popin");
+const credits = document.getElementById("credits");
+const closeCredits = document.getElementsByClassName("close")[1];
+const gameOverPopin = document.getElementById("game-over");
+const closeGameOver = document.getElementsByClassName("close")[2];
+const winPopin = document.getElementById("win-popin");
+const closeWin = document.getElementsByClassName("close")[3];
 
 let compSequence = [];
 let playerSequence = [];
@@ -72,7 +79,7 @@ let soundOn = true;
 let gameOn = false;
 let playerWon = false;
 let delay = 1000;
-let numberOfRounds = 20;
+let numberOfRounds = 3;
 let level = "easy";
 let theme = "cartoons";
 let gameBlocks = [
@@ -230,7 +237,7 @@ function startGame() {
 function gameOver() {
   gameOn = false;
   compTurn = false;
-  setTimeout(() => alert("game over"), delay);
+  setTimeout(() => gameOverPopin.classList.remove("hidden"), delay);
   playSound(
     "https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
   );
@@ -244,10 +251,13 @@ function winGame() {
   compTurn = false;
   playSound("../sounds/cheering.mp3");
   if (strictMode) {
-    setTimeout(() => alert("Congrats! YOU ROCK!!!"), delay);
+    setTimeout(() => winPopin.classList.remove("hidden"), delay);
   } else {
     setTimeout(
-      () => alert("Congrats! and try strict mode next time ;)"),
+      () => {
+        winPopin.classList.remove("hidden");
+        document.getElementById("try-strict").innerHTML = "and try strict mode next time &#128521";
+      },
       delay
     );
   }
@@ -332,6 +342,19 @@ function updateSound() {
   if (theme === "electro" && level === "hard") blockSounds = electroSounds;
 }
 
+function startStopBtns() {
+  if (theme === "classic" || theme === "farm") {
+    startBtn.style.background = "grey";
+    stopBtn.style.background = "grey";
+  } else if (theme === "electro") {
+    startBtn.style.background = "#BF066C";
+    stopBtn.style.background = "#BF066C";
+  } else {
+    startBtn.style.background = "#c90fee";
+    stopBtn.style.background = "#c90fee";
+  }
+}
+
 function applyTheme() {
   clearBrightColors();
   for (let i = 0; i < blocksDiv.length; i++) {
@@ -339,24 +362,21 @@ function applyTheme() {
       blocksDiv[i].classList.add("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
-      startBtn.style.background = "grey";
     } else if (theme === "farm") {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.add("farmTheme");
-      startBtn.style.background = "grey";
     } else if (theme === "electro") {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.add("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
-      startBtn.style.background = "#BF066C";
     } else {
       blocksDiv[i].classList.remove("classicTheme");
       blocksDiv[i].classList.remove("electroTheme");
       blocksDiv[i].classList.remove("farmTheme");
-      startBtn.style.background = "#c90fee";
     }
   }
+  startStopBtns();
 }
 
 function hideThemes() {
@@ -420,7 +440,10 @@ strictBtn.addEventListener("change", () =>
   strictBtn.checked ? (strictMode = true) : (strictMode = false)
 );
 
-homeIcon.addEventListener("click", () => window.location.href = "../../index.html");
+homeIcon.addEventListener(
+  "click",
+  () => (window.location.href = "../../index.html")
+);
 
 for (let i = 0; i < levelChoice.length; i++) {
   levelChoice[i].addEventListener("change", () => {
@@ -502,14 +525,31 @@ for (let i = 0; i < themeChoice.length; i++) {
   });
 }
 
-rules.onclick = function() {
+rules.onclick = function () {
   console.log("click");
   rulesPopin.classList.remove("hidden");
-}
+};
 
-closeRules.onclick = function() {
-  rulesPopin.classList.add("hidden");
-}
+closeRules.onclick = function () {
+    rulesPopin.classList.add("hidden");
+};
+
+credits.onclick = function () {
+  console.log("click");
+  creditsPopin.classList.remove("hidden");
+};
+
+closeCredits.onclick = function () {
+  creditsPopin.classList.add("hidden");
+};
+
+closeGameOver.onclick = function () {
+  gameOverPopin.classList.add("hidden");
+};
+
+closeWin.onclick = function () {
+  winPopin.classList.add("hidden");
+};
 
 // ----------------------- Functions to run when opening the game ------------------------------ //
 

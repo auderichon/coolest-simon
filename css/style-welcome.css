@@ -63,7 +63,7 @@ h1 span {
 }
 
 #playerName p {
-    font-size: 0.5rem;;
+    font-size: 0.7rem;;
 }
 
 #pName {
@@ -72,6 +72,7 @@ h1 span {
   border-color: #ff8000;
   font-family: "Monserrat", Arial, Helvetica, sans-serif;
   width: 30%;
+  font-size: 1.3rem;
 }
 
 #levelSelection {
@@ -149,6 +150,7 @@ footer {
   }
   #pName {
       width: 50%;
+      font-size: 1rem;
   }
 }
 
@@ -178,7 +180,7 @@ footer li:hover {
     cursor: grab;
   }
 
-/* Rules popin */
+/* Rules and credits popin */
 .popin {
     position: fixed;
     z-index: 1;
@@ -206,4 +208,15 @@ footer li:hover {
     float: right;
     font-size: 28px;
     font-weight: bold;
+  }
+
+  #credits-popin.popin {
+      font-size: 0.7rem;
+      background-color: transparent;
+  }
+
+  #credits-popin .popin-content {
+      margin: 90vh auto 0 auto;
+      padding: 0 3% 0 3%;
+      background-color: lightgray;
   }
