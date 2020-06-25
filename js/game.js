@@ -1,9 +1,9 @@
 //--------- music arrays -------//
 const cartoonSounds = [
-  "../../sounds/cartoons/boing.ogg", // topLeft
+  "../../sounds/cartoons/boing.mp3", // topLeft
   "../../sounds/cartoons/kiss.mp3", // topRight
   "../../sounds/cartoons/pop.mp3", // bottomLeft
-  "../../sounds/cartoons/flicks.ogg", // bottomRight
+  "../../sounds/cartoons/flicks.mp3", // bottomRight
   "../../sounds/cartoons/bounce.mp3", // topMiddle
   "../../sounds/cartoons/swoosh.mp3", // bottomMiddle
   "../../sounds/cartoons/prick.mp3", // middleLeft
@@ -79,7 +79,10 @@ let soundOn = true;
 let gameOn = false;
 let playerWon = false;
 let delay = 1000;
-let numberOfRounds = 6;
+let numberOfRounds = 0;
+let easyRounds = 20;
+let mediumRounds = 25;
+let hardRounds = 30;
 let level = "easy";
 let theme = "cartoons";
 let gameBlocks = [
@@ -222,11 +225,11 @@ function initializeGame() {
   playerWon = false;
   goodGuess = true;
   if (level === "easy") {
-    numberOfRounds = 3;
+    numberOfRounds = easyRounds;
   } else if (level === "medium") {
-    numberOfRounds = 6;
+    numberOfRounds = mediumRounds;
   } else {
-    numberOfRounds = 7;
+    numberOfRounds = hardRounds;
   }
 }
 
