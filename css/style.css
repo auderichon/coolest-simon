@@ -89,7 +89,7 @@ footer li:hover {
 .row {
   display: flex;
   height: 46%;
-  width: 60%;
+  width: 70%;
   align-items: center;
   justify-content: center;
 }
@@ -324,7 +324,7 @@ button {
 }
 
 .farmTheme.active#top-left {
-  background-image: url("../../images/cow.jpg");
+  background-image: url("../images/cow.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -332,7 +332,7 @@ button {
 }
 
 .farmTheme.active#top-right {
-  background-image: url("../../images/cock.jpg");
+  background-image: url("../images/cock.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -340,7 +340,7 @@ button {
 }
 
 .farmTheme.active#bottom-left {
-  background-image: url("../../images/horse.jpg");
+  background-image: url("../images/horse.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -348,7 +348,7 @@ button {
 }
 
 .farmTheme.active#bottom-right {
-  background-image: url("../../images/sheep.jpg");
+  background-image: url("../images/sheep.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
