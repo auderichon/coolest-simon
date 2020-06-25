@@ -48,12 +48,17 @@ const bottomLeft = document.getElementById("bottom-left");
 const bottomMiddle = document.getElementById("bottom-middle");
 const bottomRight = document.getElementById("bottom-right");
 const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
 const turnCount = document.getElementById("count");
 const muteBtn = document.getElementById("soundOn");
 const strictBtn = document.getElementById("strictMode");
 const levelChoice = document.getElementsByName("level");
 const themeChoice = document.getElementsByName("theme");
 const blocksDiv = document.getElementsByClassName("gameBlocks");
+const homeIcon = document.getElementById("home");
+const rulesPopin = document.getElementById("rules-popin");
+const rules = document.getElementById("rules");
+const closeRules = document.getElementsByClassName("close")[0];
 
 let compSequence = [];
 let playerSequence = [];
@@ -103,11 +108,6 @@ function playLight(index) {
   gameBlocks[index].classList.add("active");
   setTimeout(() => gameBlocks[index].classList.remove("active"), delay / 2);
 }
-
-// function playLight(block) {
-//     block.classList.add("active");
-//     setTimeout(() => block.classList.remove("active"), delay / 2);
-//   }
 
 // activate sound and light of a specific block inside a sequence of blocks to be played
 function playBlockOfSequence(sequence, index) {
@@ -214,8 +214,14 @@ function initializeGame() {
   goodGuess = true;
 }
 
+function startStopToggle() {
+  startBtn.classList.toggle("hidden");
+  stopBtn.classList.toggle("hidden");
+}
+
 function startGame() {
   gameOn = true;
+  startStopToggle();
   initializeGame();
   compTurn = true;
   playBlocks();
@@ -229,6 +235,7 @@ function gameOver() {
     "https://actions.google.com/sounds/v1/cartoon/concussive_hit_guitar_boing.ogg"
   );
   setTimeout(hideThemeAndLevel, delay * 2);
+  startStopToggle();
 }
 
 function winGame() {
@@ -247,6 +254,7 @@ function winGame() {
 
   // play winner music - TO BE ADDED
   setTimeout(hideThemeAndLevel, delay * 2);
+  startStopToggle();
 }
 
 // -----------------------  Functions to set the game board ------------------------------ //
@@ -412,6 +420,8 @@ strictBtn.addEventListener("change", () =>
   strictBtn.checked ? (strictMode = true) : (strictMode = false)
 );
 
+homeIcon.addEventListener("click", () => window.location.href = "../../index.html");
+
 for (let i = 0; i < levelChoice.length; i++) {
   levelChoice[i].addEventListener("change", () => {
     if (levelChoice[i].id === "easy") {
@@ -439,6 +449,16 @@ startBtn.addEventListener("click", () => {
   if (!gameOn) {
     startGame();
     hideThemeAndLevel();
+  }
+});
+
+stopBtn.addEventListener("click", () => {
+  if (gameOn) {
+    gameOn = false;
+    compTurn = false;
+    startStopToggle();
+    hideThemeAndLevel();
+    compSequence = [];
   }
 });
 
@@ -482,14 +502,26 @@ for (let i = 0; i < themeChoice.length; i++) {
   });
 }
 
+rules.onclick = function() {
+  console.log("click");
+  rulesPopin.classList.remove("hidden");
+}
+
+closeRules.onclick = function() {
+  rulesPopin.classList.add("hidden");
+}
+
 // ----------------------- Functions to run when opening the game ------------------------------ //
 
 blocksListeners();
 
-playerName = localStorage.getItem('playerName');
-if (playerName !== "" && playerName !== null) document.getElementById("h1").innerText = `Let's play, ${playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase()}!`;
+playerName = localStorage.getItem("playerName");
+if (playerName !== "" && playerName !== null)
+  document.getElementById("h1").innerText = `Let's play, ${
+    playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase()
+  }!`;
 console.log(playerName);
-level = localStorage.getItem('level');
+level = localStorage.getItem("level");
 localStorage.clear();
 
 document.getElementById(level).checked = true;

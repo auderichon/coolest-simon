@@ -26,7 +26,15 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 50px;
+  padding-top: 20px;
+  flex-direction: column;
+}
+
+nav {
+  align-self: flex-start;
+  padding-left: 30px;
+  font-size: 1.5em;
+  cursor: grab;
 }
 
 #game-specs {
@@ -55,11 +63,19 @@ header {
   justify-content: center;
 }
 
+#popin {
+  grid-column: 1 / 6;
+}
+
 footer {
   grid-column: 1 / 6;
   grid-row: 12 / 13;
   justify-content: center;
   display: flex;
+}
+
+footer li:hover {
+  cursor: grab;
 }
 
 .gameBlocks {
@@ -208,7 +224,7 @@ footer {
   border: #16759b solid 3px;
 }
 
-#startBtn {
+#start-game button {
   background: #c90fee;
   width: 25%;
   border-radius: 10px;
@@ -227,6 +243,9 @@ footer {
   }
   #startBtn {
     font-size: 1.5rem;
+  }
+  nav {
+    font-size: 1em;
   }
 }
 
@@ -411,7 +430,7 @@ footer {
 }
 
 .electroTheme.active#middle-left {
-  background: #c3f5f4;
+  background: #e3fafa;
 }
 
 .electroTheme.active#middle-middle {
@@ -480,4 +499,34 @@ footer ul {
 footer li {
   margin: 0 30px 10px 30px;
   display: block;
+}
+
+/* Rules popin */
+.popin {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  color: #262626;
+}
+
+.popin-content {
+  background-color: #fefefe;
+  margin: 20% auto; /* 20% from the top and centered */
+  padding: 2% 3% 2% 3%;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }

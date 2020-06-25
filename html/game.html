@@ -6,11 +6,14 @@
     <title>The Coolest Simon Game</title>
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="icon" href="../../images/favicon.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js"></script>
     <script src="../../js/game.js" type="module"></script>
   </head>
   <body>
+    
     <header>
-      <h1 id="h1">Let's play!</h1>
+        <nav id="home"><i class="fa fa-home" aria-hidden="true"></i></nav>
+        <h1 id="h1">Let's play!</h1>
     </header>
 
     <section id="game-specs">
@@ -86,11 +89,27 @@
 
     <section id="start-game">
       <button id="startBtn">Start</button>
+      <button id="stopBtn" class="hidden">Stop</button>
     </section>
 
+    <section id="popin">
+        <div id="rules-popin" class="popin hidden">
+            <div class="popin-content">
+            <span class="close">&times;</span>
+            <p><strong>Easy as &#129383!</strong></p>
+            <br>
+            <p><strong>Click on start and repeat after Simon</strong> (first 1 signal, then 2 and so on...).</p>
+            <br>
+            <p><strong>You win when you manage to repeat the last sequence of 20 signals</strong> (25 for the medium level and 30 for the hard level).</p>
+            <br>
+            <p><strong>NB</strong>: if you unselect the <strong>strict</strong> mode, you will be able to re-start from the last sequence you found, <em>(instead of starting back from the beginning of the game)</em>.</p>
+            </div>
+        </div>
+    </section>  
+    
     <footer>
       <ul>
-        <li>Rules</li>
+        <li id="rules">Rules</li>
         <li>Credits</li>
       </ul>
     </footer>
