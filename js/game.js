@@ -464,7 +464,7 @@ strictBtn.addEventListener("change", () =>
 
 homeIcon.addEventListener(
   "click",
-  () => (window.location.href = "../../index.html")
+  () => (window.location.href = "../index.html")
 );
 
 for (let i = 0; i < levelChoice.length; i++) {
