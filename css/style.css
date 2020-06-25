@@ -177,7 +177,7 @@ footer li:hover {
 }
 
 .active#bottom-left {
-  background: #fa86cb;
+  background: #f8acda;
 }
 
 .active#bottom-middle {
@@ -325,7 +325,7 @@ button {
 
 .farmTheme.active#top-left {
   background-image: url("../../images/cow.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #7ddd85;
@@ -333,7 +333,7 @@ button {
 
 .farmTheme.active#top-right {
   background-image: url("../../images/cock.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #d87b73;
@@ -341,7 +341,7 @@ button {
 
 .farmTheme.active#bottom-left {
   background-image: url("../../images/horse.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #fcef79;
@@ -349,7 +349,7 @@ button {
 
 .farmTheme.active#bottom-right {
   background-image: url("../../images/sheep.jpg");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: #5e89e6;

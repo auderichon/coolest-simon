@@ -79,7 +79,7 @@ let soundOn = true;
 let gameOn = false;
 let playerWon = false;
 let delay = 1000;
-let numberOfRounds = 3;
+let numberOfRounds = 6;
 let level = "easy";
 let theme = "cartoons";
 let gameBlocks = [
@@ -153,11 +153,6 @@ function playBrightColors() {
   }
 }
 
-function flashBlocks() {
-  playBrightColors();
-  //CREATE ANIMATION HERE
-}
-
 // function to play a sequence of blocks
 function playBlocks() {
   clearInterval(intervalId);
@@ -166,6 +161,19 @@ function playBlocks() {
   turnCount.innerText = turn;
 
   addNewIndex(compSequence);
+  if (theme !== "farm" && compSequence.length > 5 && compSequence.length < 11) {
+    delay = 900;
+  } else if (
+    theme !== "farm" &&
+    compSequence.length > 11 &&
+    compSequence.length < 16
+  ) {
+    delay = 800;
+  } else if (theme !== "farm" && compSequence.length > 16) {
+    delay = 700;
+  } else {
+    delay = 1000;
+  }
   playCompSequence();
 }
 
@@ -180,15 +188,9 @@ function compare() {
 
   if (goodGuess === false) {
     if (strictMode) {
-      setTimeout(() => {
-        playBrightColors();
-      }, delay / 2);
-      setTimeout(() => {
-        clearBrightColors();
-      }, delay);
       gameOver();
     } else {
-      playSound("./sounds/try-again.mp3");
+      playSound("../../sounds/try-again.mp3");
       blocksPlayed = 0;
       playerSequence = [];
       goodGuess = true;
@@ -219,6 +221,13 @@ function initializeGame() {
   intervalId = 0;
   playerWon = false;
   goodGuess = true;
+  if (level === "easy") {
+    numberOfRounds = 3;
+  } else if (level === "medium") {
+    numberOfRounds = 6;
+  } else {
+    numberOfRounds = 7;
+  }
 }
 
 function startStopToggle() {
@@ -235,6 +244,12 @@ function startGame() {
 }
 
 function gameOver() {
+  setTimeout(() => {
+    playBrightColors();
+  }, delay / 2);
+  setTimeout(() => {
+    clearBrightColors();
+  }, delay);
   gameOn = false;
   compTurn = false;
   setTimeout(() => gameOverPopin.classList.remove("hidden"), delay);
@@ -246,23 +261,25 @@ function gameOver() {
 }
 
 function winGame() {
-  setTimeout(() => flashBlocks(), delay / 2); // TO BE ADDED
+  setTimeout(() => {
+    playBrightColors();
+  }, delay / 2);
+  setTimeout(() => {
+    clearBrightColors();
+  }, delay);
   gameOn = false;
   compTurn = false;
   playSound("../sounds/cheering.mp3");
   if (strictMode) {
     setTimeout(() => winPopin.classList.remove("hidden"), delay);
   } else {
-    setTimeout(
-      () => {
-        winPopin.classList.remove("hidden");
-        document.getElementById("try-strict").innerHTML = "and try strict mode next time &#128521";
-      },
-      delay
-    );
+    setTimeout(() => {
+      winPopin.classList.remove("hidden");
+      document.getElementById("try-strict").innerHTML =
+        "but try strict mode next time &#128521";
+    }, delay);
   }
 
-  // play winner music - TO BE ADDED
   setTimeout(hideThemeAndLevel, delay * 2);
   startStopToggle();
 }
@@ -493,8 +510,6 @@ function blocksListeners() {
       } else if (!compTurn && !gameOn) {
         playLight(i);
         playSound(blockSounds[i]);
-        console.log(gameBlocks[i]);
-        console.log(gameBlocks);
       } else {
         playerSequence.push(i);
         compare();
@@ -531,7 +546,7 @@ rules.onclick = function () {
 };
 
 closeRules.onclick = function () {
-    rulesPopin.classList.add("hidden");
+  rulesPopin.classList.add("hidden");
 };
 
 credits.onclick = function () {
