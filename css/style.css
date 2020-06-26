@@ -169,7 +169,7 @@ footer li:hover {
 }
 
 .active#middle-middle {
-  background: #aff7f7;
+  background: #bef7f7;
 }
 
 .active#middle-right {
@@ -177,11 +177,11 @@ footer li:hover {
 }
 
 .active#bottom-left {
-  background: #f8acda;
+  background: #faaae9;
 }
 
 .active#bottom-middle {
-  background: #f8f7a7;
+  background: #faf9cf;
 }
 
 .active#bottom-right {
@@ -279,7 +279,7 @@ button {
 }
 
 .classicTheme.active#bottom-left {
-  background: #faed8e;
+  background: #f7eda5;
 }
 
 .classicTheme.active#bottom-right {
@@ -450,7 +450,7 @@ button {
 }
 
 .electroTheme.active#bottom-right {
-  background: #b0e6d5;
+  background: #bfe4d8;
 }
 
 .electroTheme#top-left:hover {
