@@ -135,9 +135,9 @@ function playCompSequence() {
     if (i < compSequence.length) {
       playBlockOfSequence(compSequence, i);
       
-      console.log("compSequence: " + compSequence);
-      console.log("index played: " + i)
-      console.log("compSequence[i]: " + compSequence[i]);
+      // console.log("compSequence: " + compSequence);
+      // console.log("index played: " + i)
+      // console.log("compSequence[i]: " + compSequence[i]);
     } 
     i++;
   }, delay);
@@ -196,7 +196,7 @@ function compare() {
     if (strictMode) {
       gameOver();
     } else {
-      playSound("../../sounds/try-again.mp3");
+      playSound("../sounds/try-again.mp3");
       blocksPlayed = 0;
       playerSequence = [];
       goodGuess = true;
