@@ -134,11 +134,11 @@ function playCompSequence() {
   intervalId = setInterval(function () {
     if (i < compSequence.length) {
       playBlockOfSequence(compSequence, i);
-      console.log(compSequence);
-      console.log(compSequence[i]);
-    } else {
-      return;
-    }
+      
+      console.log("compSequence: " + compSequence);
+      console.log("index played: " + i)
+      console.log("compSequence[i]: " + compSequence[i]);
+    } 
     i++;
   }, delay);
   setTimeout(() => {
@@ -164,8 +164,8 @@ function playBlocks() {
   compTurn = true;
   turn++;
   turnCount.innerText = turn;
-
   addNewIndex(compSequence);
+
   if (theme !== "farm" && compSequence.length > 5 && compSequence.length < 11) {
     delay = 900;
   } else if (
@@ -179,6 +179,7 @@ function playBlocks() {
   } else {
     delay = 1000;
   }
+
   playCompSequence();
 }
 
@@ -580,8 +581,8 @@ if (playerName !== "" && playerName !== null)
   document.getElementById("h1").innerText = `Let's play, ${
     playerName.charAt(0).toUpperCase() + playerName.slice(1).toLowerCase()
   }!`;
-console.log(playerName);
-level = localStorage.getItem("level");
+
+if (localStorage.getItem("level") !== null) level = localStorage.getItem("level");
 localStorage.clear();
 
 document.getElementById(level).checked = true;
