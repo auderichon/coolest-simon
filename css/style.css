@@ -529,6 +529,7 @@ footer li {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  cursor: grab;
 }
 
 #credits-popin.popin {
