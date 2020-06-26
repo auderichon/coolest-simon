@@ -165,23 +165,23 @@ footer li:hover {
 }
 
 .active#middle-left {
-  background: #f7c767;
+  background: #ffe5b2;
 }
 
 .active#middle-middle {
-  background: #bef7f7;
+  background: #b2ffff;
 }
 
 .active#middle-right {
-  background: #baf87c;
+  background: #e5ffcc;
 }
 
 .active#bottom-left {
-  background: #faaae9;
+  background: #ffd6ef;
 }
 
 .active#bottom-middle {
-  background: #faf9cf;
+  background: #ffffcc;
 }
 
 .active#bottom-right {
@@ -201,7 +201,7 @@ footer li:hover {
 }
 
 #middle-left:hover {
-  border: #bb6b01 solid 3px;
+  border: #cc8700 solid 3px;
 }
 
 #middle-middle:hover {
@@ -209,7 +209,7 @@ footer li:hover {
 }
 
 #middle-right:hover {
-  border: #4d9901 solid 3px;
+  border: #66cc00 solid 3px;
 }
 
 #bottom-left:hover {
@@ -217,7 +217,7 @@ footer li:hover {
 }
 
 #bottom-middle:hover {
-  border: #a7a702 solid 3px;
+  border: #cccc00 solid 3px;
 }
 
 #bottom-right:hover {
@@ -271,7 +271,7 @@ button {
 }
 
 .classicTheme.active#top-left {
-  background: #8ff899;
+  background: #b1f1b7;
 }
 
 .classicTheme.active#top-right {
@@ -279,7 +279,7 @@ button {
 }
 
 .classicTheme.active#bottom-left {
-  background: #f7eda5;
+  background: #fff8c3;
 }
 
 .classicTheme.active#bottom-right {
@@ -418,7 +418,7 @@ button {
 }
 
 .electroTheme.active#top-left {
-  background: #63f7e8;
+  background: #a9ceca;
 }
 
 .electroTheme.active#top-middle {
@@ -430,7 +430,7 @@ button {
 }
 
 .electroTheme.active#middle-left {
-  background: #e3fafa;
+  background: #bafffd;
 }
 
 .electroTheme.active#middle-middle {
@@ -450,7 +450,7 @@ button {
 }
 
 .electroTheme.active#bottom-right {
-  background: #bfe4d8;
+  background: #cdfced;
 }
 
 .electroTheme#top-left:hover {
